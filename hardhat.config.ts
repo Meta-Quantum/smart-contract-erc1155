@@ -31,7 +31,7 @@ task("accounts", "Prints the list of accounts", async (args, hre) => {
 	networks: {
 		mainnet: {
 			chainId: 1,
-			url: `${process.env.ALCHEMY_URL}${process.env.ALCHEMY_API_KEY}`,
+			url: `${process.env.PROVIDER_URL}${process.env.PROVIDER_URL}`,
 			gasPrice: 65000000000,
 			accounts: {
 				mnemonic:process.env.MNEMONIC
@@ -39,7 +39,7 @@ task("accounts", "Prints the list of accounts", async (args, hre) => {
 		},
 		polygon: {
 			chainId: 137,
-			url:`${process.env.ALCHEMY_URL}${process.env.ALCHEMY_API_KEY}`,
+			url:`${process.env.PROVIDER_URL}${process.env.PROVIDER_URL}`,
 			gasPrice: 65000000000,
 			accounts: {
 				mnemonic:process.env.MNEMONIC,
@@ -48,7 +48,7 @@ task("accounts", "Prints the list of accounts", async (args, hre) => {
 		},
 		mumbai: {
 			chainId: 80001,
-			url: `${process.env.ALCHEMY_URL}${process.env.ALCHEMY_API_KEY}`,
+			url: `${process.env.PROVIDER_URL}${process.env.PROVIDER_URL}`,
 			gasPrice: 65000000000,
 			accounts: {
 				mnemonic:process.env.MNEMONIC,
