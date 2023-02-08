@@ -82,8 +82,6 @@ contract  MetaQuantumERC1155 is
 
     bytes4 private constant _INTERFACE_ID_ERC2981 = 0x2a55205a;
     uint256 private constant MAX_INT_NUMBER = 115792089237316195423570985008687907853269984665640564039457584007913129639935;
-    // make sure that the initialize function is called one time only
-    bool private initialized;
 
     event CreateID(uint256 tokenId);
 
@@ -100,9 +98,6 @@ contract  MetaQuantumERC1155 is
         initializer
         public
     {
-       
-        require(!initialized, "Contract instance has already been initialized");
-        initialized = true;
 
         __ERC1155_init(uri_);
         __ERC1155Supply_init();
