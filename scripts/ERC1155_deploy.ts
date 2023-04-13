@@ -12,17 +12,19 @@ const main = async () => {
   console.log("Accounts:", accounts.map((a: { address: any; }) => a.address));
 
 	const MetaQuantumERC1155 = await ethers.getContractFactory("MetaQuantumERC1155");  
-	const metaQuantumERC1155 = await upgrades.deployProxy(MetaQuantumERC1155,{initializer: false,unsafeAllowCustomTypes:true});
-	await metaQuantumERC1155.deployed();
+	//const metaQuantumERC1155 = await upgrades.deployProxy(MetaQuantumERC1155,{initializer: false,unsafeAllowCustomTypes:true});
+	const metaQuantumERC1155 = await upgrades.deployProxy(MetaQuantumERC1155,["MetaQuantumERC1155","MQNFT","https://gateway.pinata.cloud/ipfs/?/{id}.json", "https://gateway.pinata.cloud/ipfs/QmTfE2qX3Bje2n2dRmuqi6x3tK4CFnQiHVDZmF4AfhNNLb/contract_metadata.json", accounts[0].address,accounts[0].address,1000000,10000]);
+	
+  await metaQuantumERC1155.deployed();
   
   await snooze(35000);
 	// verify the Address
 	console.log("MetaQuantum NFT ERC1155 deployed proxy address:", metaQuantumERC1155.address);
 	//initialize
-  const tx2 = await metaQuantumERC1155.initialize("MetaQuantumERC1155","MQNFT","https://gateway.pinata.cloud/ipfs/?/{id}.json", "https://gateway.pinata.cloud/ipfs/QmTfE2qX3Bje2n2dRmuqi6x3tK4CFnQiHVDZmF4AfhNNLb/contract_metadata.json", accounts[0].address,accounts[0].address,1000000,10000);
-  await tx2.wait();
+  //const tx2 = await metaQuantumERC1155.initialize("MetaQuantumERC1155","MQNFT","https://gateway.pinata.cloud/ipfs/?/{id}.json", "https://gateway.pinata.cloud/ipfs/QmTfE2qX3Bje2n2dRmuqi6x3tK4CFnQiHVDZmF4AfhNNLb/contract_metadata.json", accounts[0].address,accounts[0].address,1000000,10000);
+  //await tx2.wait();
 
-  await snooze(35000);
+  //await snooze(35000);
 
   console.log("MetaQuantum NFT ERC1155 initialized");
 
